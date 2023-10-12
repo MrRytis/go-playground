@@ -13,10 +13,10 @@ type Data struct {
 
 func CreateGoroutine() {
 	wg := sync.WaitGroup{}
-	c := make(chan Data, 100)
-	wg.Add(100)
+	c := make(chan Data, 1)
 
 	for i := 0; i < 100; i++ {
+		wg.Add(1)
 		go DoSomethingMultithreading(&c, i, &wg)
 
 	}
